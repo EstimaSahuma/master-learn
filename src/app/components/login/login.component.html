@@ -1,7 +1,8 @@
 
 <div class="body">
   <div class="login">
-    <form [formGroup]="form" (ngSubmit)="entrar()">
+    <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
+    <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="entrar()">
       
       <img src="./assets/img/team.png" alt="" width="50%">
   
