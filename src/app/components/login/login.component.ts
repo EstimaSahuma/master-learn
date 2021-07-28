@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar) 
+  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) 
   { 
     this.form = this.fb.group({
       usuario: ['', Validators.required],
@@ -54,7 +55,7 @@ export class LoginComponent implements OnInit {
 
     setTimeout(() => {
       //redirect to dashboard
-      this.loading = false;
+      this.router.navigate(['dashboard'])
     }, 1500);
   }
 
