@@ -8,9 +8,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { SharedModule } from '../shared/shared.module';
+import { CriarComponent } from './usuario/criar/criar.component';
 
 @NgModule({
-  declarations: [DashboardComponent, HomeComponent, NavbarComponent, UsuarioComponent, ReportesComponent],
+  declarations: [DashboardComponent, HomeComponent, NavbarComponent, UsuarioComponent, ReportesComponent, CriarComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

@@ -1,19 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Usuario } from 'src/app/interface/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 
-const ELEMENT_DATA: Usuario[] = [
-  {id: 1, nome: 'Hydrogen', apelido: '1.0079', sexo: 'H'},
-  {id: 2, nome: 'Helium', apelido: '4.0026', sexo: 'He'},
-  {id: 3, nome: 'Lithium', apelido: '6.941', sexo: 'Li'},
-  {id: 4, nome: 'Beryllium', apelido: '9.0122', sexo: 'Be'},
-  {id: 5, nome: 'Boron', apelido: '10.811', sexo: 'B'},
-  {id: 6, nome: 'Carbon', apelido: '12.0107', sexo: 'C'},
-  {id: 7, nome: 'Nitrogen', apelido: '14.0067', sexo: 'N'},
-  {id: 8, nome: 'Oxygen', apelido: '15.9994', sexo: 'O'},
-  {id: 9, nome: 'Fluorine', apelido: '18.9984', sexo: 'F'},
-  {id: 10, nome: 'Neon', apelido: '20.1797', sexo: 'Ne'},
-];
+
 
 @Component({
   selector: 'app-usuario',
@@ -21,12 +15,45 @@ const ELEMENT_DATA: Usuario[] = [
   styleUrls: ['./usuario.component.css']
 })
 export class UsuarioComponent implements OnInit {
+  listUsuarios: Usuario[] = [];
   displayedColumns: string[] = ['id', 'nome', 'apelido', 'sexo', 'opcao'];
-  dataSource = ELEMENT_DATA;
+  dataSource: MatTableDataSource<any>;
 
-  constructor() { }
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor(private _usuarioService: UsuarioService, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.carregarUsuario();
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+
+    // If the user changes the sort order, reset back to the first page.
+    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  carregarUsuario(){
+    this.listUsuarios = this._usuarioService.getUsuario();
+    this.dataSource = new MatTableDataSource(this.listUsuarios);
+  }
+
+  eliminar(id: number) {
+    //console.log(id);
+    this._snackBar.open('Eliminado com Sucesso', '', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
+    this._usuarioService.eliminarUsuario(id);
+    this.carregarUsuario();
   }
 
 }
