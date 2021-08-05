@@ -8,7 +8,11 @@
         "redirect": "/dashboard/usuario"
     },
     {
-        "nome": "Reportes",
+        "nome": "Quiz",
+        "redirect": "/dashboard/reportes"
+    },
+    {
+        "nome": "Acerca",
         "redirect": "/dashboard/reportes"
     }
 ]
