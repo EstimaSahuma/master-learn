@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { HomeComponent } from './home/home.component';
+import { CriarQuizComponent } from './reportes/criar-quiz/criar-quiz.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { CriarComponent } from './usuario/criar/criar.component';
 import { UsuarioComponent } from './usuario/usuario.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
       { path: 'usuario', component: UsuarioComponent },
       { path: 'criar-usuario', component: CriarComponent },
       { path: 'reportes', component: ReportesComponent },
+      { path: 'criar-reportes', component: CriarQuizComponent }
     ]
   }
 ];

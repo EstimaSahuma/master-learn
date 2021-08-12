@@ -9,9 +9,10 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { SharedModule } from '../shared/shared.module';
 import { CriarComponent } from './usuario/criar/criar.component';
+import { CriarQuizComponent } from './reportes/criar-quiz/criar-quiz.component';
 
 @NgModule({
-  declarations: [DashboardComponent, HomeComponent, NavbarComponent, UsuarioComponent, ReportesComponent, CriarComponent],
+  declarations: [DashboardComponent, HomeComponent, NavbarComponent, UsuarioComponent, ReportesComponent, CriarComponent, CriarQuizComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
