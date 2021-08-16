@@ -1,3 +1,26 @@
+.body{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+.quiz {
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+    margin-top: 10px;
+    background-color: #626060;
+}
+
 .anchor {
-    width: 90%;
+    width: 80%;
+}
+
+.button {
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.spinner {
+    margin: 0 auto;
 }

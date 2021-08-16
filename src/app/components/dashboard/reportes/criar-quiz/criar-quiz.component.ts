@@ -7,6 +7,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./criar-quiz.component.css']
 })
 export class CriarQuizComponent implements OnInit {
+
   formQuiz: FormGroup;
 
   generos: any[] = [

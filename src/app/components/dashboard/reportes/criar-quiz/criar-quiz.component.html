@@ -3,50 +3,35 @@
     <span> Cadastrar Nova Pergunta</span>
   </mat-toolbar>
 
-  <mat-card style="margin-top: 10px;">
-    <form  [formGroup]="formQuiz" (ngSubmit)="validar()">
-      <mat-grid-list cols="4" rowHeight="70px">
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="anchor">
-            <mat-label>Nome</mat-label>
-            <input matInput formControlName="nome">
+  <div class="body">
+    <div style="margin-top: 10px;" class="quiz">
+      <form [formGroup]="formQuiz" (ngSubmit)="validar()">
+        angola
+
+        
+
+        <p>
+          <mat-form-field appearance="fill" class="anchor">
+            <mat-label>Input</mat-label>
+            <input matInput>
           </mat-form-field>
-        </mat-grid-tile>
+        </p>
 
-        <mat-grid-tile [colspan]="3" [rowspan]="5" [style.background]="'lightblue'">
-          <img src="./assets/img/team.png" width="250px" height="250px">
-        </mat-grid-tile>
+        <p>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field class="anchor">
+              <mat-label>Genero</mat-label>
+              <mat-select formControlName="genero">
+                <mat-option *ngFor="let genero of generos" [value]="genero.value">
+                  {{genero.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </p>
         
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="anchor">
-            <mat-label>Apelido</mat-label>
-            <input matInput formControlName="apelido">
-          </mat-form-field>
-        </mat-grid-tile>
+      </form>
+    </div>
+  </div>
 
-        
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="anchor">
-            <mat-label>Genero</mat-label>
-            <mat-select formControlName="genero">
-              <mat-option *ngFor="let genero of generos" [value]="genero.value">
-                {{genero.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </mat-grid-tile>
-        
-
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <button type="submit" mat-raised-button color="primary" class="anchor">Sucesso</button>
-        </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <button mat-raised-button color="accent" class="anchor">Voltar</button>
-        </mat-grid-tile>
-      
-        
-      </mat-grid-list>
-    </form>
-  </mat-card>
 </div>

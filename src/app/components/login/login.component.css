@@ -8,8 +8,9 @@
 
 .login {
     width: 100%;
-    max-width: 330px;
+    max-width: 450px;
     text-align: center;
+    background-color: #626060;
 }
 
 .anchor {
@@ -18,6 +19,7 @@
 
 .button {
     height: 50px;
+    margin-bottom: 20px;
 }
 
 .spinner {
