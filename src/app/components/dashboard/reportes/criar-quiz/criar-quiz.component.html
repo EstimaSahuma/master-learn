@@ -18,18 +18,12 @@
         </p>
 
         <p>
-          <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <mat-form-field class="anchor">
-              <mat-label>Genero</mat-label>
-              <mat-select formControlName="genero">
-                <mat-option *ngFor="let genero of generos" [value]="genero.value">
-                  {{genero.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </mat-grid-tile>
+          <mat-form-field appearance="fill" class="anchor">
+            <mat-label>Input</mat-label>
+            <input matInput>
+          </mat-form-field>
         </p>
-        
+          
       </form>
     </div>
   </div>
