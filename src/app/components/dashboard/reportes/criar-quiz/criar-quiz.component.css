@@ -24,3 +24,6 @@
 .spinner {
     margin: 0 auto;
 }
+.mat-radio-button {
+    margin: 0 12px;
+  }

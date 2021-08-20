@@ -21,6 +21,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [],
@@ -44,7 +46,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatCardModule,
     MatGridListModule,
     MatTabsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDividerModule
   ],
   exports: [
     MatSliderModule,
@@ -65,7 +68,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatCardModule,
     MatGridListModule,
     MatTabsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDividerModule,
+    MatRadioModule
   ]
 })
 export class SharedModule { }

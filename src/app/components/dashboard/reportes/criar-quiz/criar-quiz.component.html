@@ -7,23 +7,87 @@
     <div style="margin-top: 10px;" class="quiz">
       <form [formGroup]="formQuiz" (ngSubmit)="validar()">
         angola
+        <div class="row">
 
-        
+          <mat-form-field class="anchor">
+            <mat-label>CATEGORIA</mat-label>
+            <mat-select formControlName="genero">
+              <mat-option *ngFor="let genero of generos" [value]="genero.value">
+                {{genero.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
-        <p>
           <mat-form-field appearance="fill" class="anchor">
-            <mat-label>Input</mat-label>
+            <mat-label>PERGUNTA</mat-label>
             <input matInput>
           </mat-form-field>
-        </p>
 
-        <p>
           <mat-form-field appearance="fill" class="anchor">
-            <mat-label>Input</mat-label>
+            <mat-label>img</mat-label>
             <input matInput>
           </mat-form-field>
-        </p>
-          
+
+          <div style="background-color: #554b4b; margin-top: 10px;">
+
+            <mat-divider style="background-color: black;"></mat-divider>
+
+            <div class="row"  style=" margin-top: 20px;">
+              <mat-form-field appearance="fill" class="anchor col-md-10">
+                <mat-label>PERGUNTA</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <mat-radio-group [formControl]="floatLabelControl">
+                  <mat-radio-button value="1">Correta</mat-radio-button>
+                </mat-radio-group>
+
+              <mat-divider></mat-divider>
+            </div>
+
+            <div class="row"  style=" margin-top: 20px;">
+              <mat-form-field appearance="fill" class="anchor col-md-10">
+                <mat-label>PERGUNTA</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <mat-radio-group [formControl]="floatLabelControl">
+                  <mat-radio-button value="2">Correta</mat-radio-button>
+                </mat-radio-group>
+
+              <mat-divider></mat-divider>
+            </div>
+
+
+            <div class="row"  style=" margin-top: 20px;">
+              <mat-form-field appearance="fill" class="anchor col-md-10">
+                <mat-label>PERGUNTA</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <mat-radio-group [formControl]="floatLabelControl">
+                  <mat-radio-button value="3">Correta</mat-radio-button>
+                </mat-radio-group>
+
+              <mat-divider></mat-divider>
+            </div>
+
+            <div class="row"  style=" margin-top: 20px;">
+              <mat-form-field appearance="fill" class="anchor col-md-10">
+                <mat-label>PERGUNTA</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <mat-radio-group [formControl]="floatLabelControl">
+                  <mat-radio-button value="4">Correta</mat-radio-button>
+                </mat-radio-group>
+
+              <mat-divider></mat-divider>
+            </div>
+
+          </div>
+        </div>
+
       </form>
     </div>
   </div>

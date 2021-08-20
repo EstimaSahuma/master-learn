@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-criar-quiz',
@@ -10,12 +10,19 @@ export class CriarQuizComponent implements OnInit {
 
   formQuiz: FormGroup;
 
+  option: FormGroup;
+  floatLabelControl = new FormControl('1');
+
   generos: any[] = [
     {value: 'Masculino', viewValue: 'Masculino'},
     {value: 'Femenino', viewValue: 'Femenino'}
   ];
 
-  constructor() { }
+  constructor(fb: FormBuilder) {
+      this.option = fb.group({
+        floatLabel: this.floatLabelControl
+      });
+   }
 
   ngOnInit() {
   }
