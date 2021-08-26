@@ -1,12 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Usuario } from '../interface/usuario';
+import { Observable, of, pipe } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
-  usuarios: Usuario[] = [
+  private usuariosUrl = 'http://localhost/erp-xbytes/aluno';
+
+  /* usuarios: Usuario[] = [
     {id: 1, nome: 'Hydrogen', apelido: '1.0079', sexo: 'H'},
     {id: 2, nome: 'Helium', apelido: '4.0026', sexo: 'He'},
     {id: 3, nome: 'Lithium', apelido: '6.941', sexo: 'Li'},
@@ -17,15 +21,39 @@ export class UsuarioService {
     {id: 8, nome: 'Oxygen', apelido: '15.9994', sexo: 'O'},
     {id: 9, nome: 'Fluorine', apelido: '18.9984', sexo: 'F'},
     {id: 10, nome: 'Neon', apelido: '20.1797', sexo: 'Ne'},
-  ];
+  ]; */
 
-  constructor() { }
+  constructor(private _http: HttpClient) { }
 
-  getUsuario() {
+  /* getUsuario() {
     return this.usuarios.slice();
   }
 
   eliminarUsuario(id: number){
     this.usuarios.splice(id, 1);
+  } */
+
+  getUsuario(): Observable<Usuario[]> {
+    return this._http.get<Usuario[]>('http://localhost/erp-xbytes/aluno');
+  }
+
+  
+
+  eliminarUsuario(id: number){
+  }
+
+  private log(message: string)
+  {
+    return 'Erro ao Carregar...';
+  }
+
+  private handleError<T>(operation = 'operation', result: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+
+      this.log(`${operation} failed: ${error.message}`);
+
+      return of(result as T);
+    }
   }
 }

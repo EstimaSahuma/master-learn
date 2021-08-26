@@ -1,6 +1,10 @@
 export interface Usuario {
-    nome: string;
     id: number;
+    nome: string;
     apelido: string;
-    sexo: string;
+    genero: string;
+    user: string;
+    idade: number;
+    created_at: Date;
+    updated_at: Date;
   }

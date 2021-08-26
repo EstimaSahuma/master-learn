@@ -41,8 +41,14 @@ export class UsuarioComponent implements OnInit {
   }
 
   carregarUsuario(){
-    this.listUsuarios = this._usuarioService.getUsuario();
-    this.dataSource = new MatTableDataSource(this.listUsuarios);
+    this._usuarioService.getUsuario().subscribe((usuario) =>{
+
+      this.listUsuarios = usuario
+      //console.log(this.listUsuarios);
+      this.dataSource = new MatTableDataSource(this.listUsuarios);
+    } 
+    );
+
   }
 
   eliminar(id: number) {
