@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router';
+import { Usuario } from 'src/app/interface/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-criar',
@@ -8,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./criar.component.css']
 })
 export class CriarComponent implements OnInit {
+  usuario: Usuario;
   form: FormGroup;
 
   generos: any[] = [
@@ -15,11 +18,12 @@ export class CriarComponent implements OnInit {
     {value: 'Femenino', viewValue: 'Femenino'}
   ];
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder, private _usuarioService: UsuarioService, private router: Router) { 
     this.form = this.fb.group({
       nome: ['', Validators.required],
       apelido: ['', Validators.required],
       genero: ['', Validators.required],
+      idade: ['', Validators.required],
     })
   }
 
@@ -27,7 +31,21 @@ export class CriarComponent implements OnInit {
   }
 
   validar(){
-    console.log(this.form);
+    console.log(this.form.value.nome);
+
+    this.usuario = {
+      nome: this.form.value.nome,
+      apelido: this.form.value.apelido,
+      genero: this.form.value.genero,
+      user: this.form.value.user,
+      idade: this.form.value.idade
+    };
+
+    this._usuarioService.saveUsuario(this.usuario).subscribe();
+
+    this.router.navigate(['dashboard'])
   }
+
+
 
 }

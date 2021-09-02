@@ -34,7 +34,13 @@ export class UsuarioService {
   } */
 
   getUsuario(): Observable<Usuario[]> {
-    return this._http.get<Usuario[]>('http://localhost/erp-xbytes/aluno');
+    return this._http.get<Usuario[]>('http://teste.test/aluno');
+  }
+
+  saveUsuario(usuario: Usuario) {
+    console.log('esta Aqui');
+    console.log(usuario);
+    return this._http.post<Usuario>('http://teste.test/save', usuario);
   }
 
   

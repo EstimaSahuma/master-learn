@@ -4,7 +4,7 @@
   </mat-toolbar>
 
   <mat-card style="margin-top: 10px;">
-    <form  [formGroup]="form" (ngSubmit)="validar()">
+    <form  [formGroup]="form" (ngSubmit)="validar()" enctype="multipart/form-data">
       <mat-grid-list cols="4" rowHeight="70px">
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="anchor">
@@ -24,6 +24,13 @@
           </mat-form-field>
         </mat-grid-tile>
 
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="anchor">
+            <mat-label>Idade</mat-label>
+            <input type="number" matInput formControlName="idade">
+          </mat-form-field>
+        </mat-grid-tile>
+
         
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="anchor">
@@ -40,11 +47,6 @@
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <button type="submit" mat-raised-button color="primary" class="anchor">Sucesso</button>
         </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <button mat-raised-button color="accent" class="anchor">Voltar</button>
-        </mat-grid-tile>
-      
         
       </mat-grid-list>
     </form>
