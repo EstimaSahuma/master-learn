@@ -17,7 +17,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class UsuarioComponent implements OnInit {
   listUsuarios: Usuario[] = [];
   displayedColumns: string[] = ['id', 'nome', 'apelido', 'sexo', 'opcao'];
-  dataSource: MatTableDataSource<any>;
+  dataSource: MatTableDataSource<Usuario>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -28,8 +28,20 @@ export class UsuarioComponent implements OnInit {
     this.carregarUsuario();
   }
 
+  carregarUsuario() {
+    this._usuarioService.getUsuario().subscribe((usuario) => {
+
+      this.listUsuarios = usuario;
+      //console.log(this.listUsuarios);
+      this.dataSource = new MatTableDataSource(usuario);
+
+      this.dataSource.paginator = this.paginator;
+    });
+
+  }
+
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    //this.dataSource.paginator = this.paginator;
 
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
@@ -40,16 +52,7 @@ export class UsuarioComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  carregarUsuario(){
-    this._usuarioService.getUsuario().subscribe((usuario) =>{
 
-      this.listUsuarios = usuario
-      //console.log(this.listUsuarios);
-      this.dataSource = new MatTableDataSource(this.listUsuarios);
-    } 
-    );
-
-  }
 
   eliminar(id: number) {
     //console.log(id);

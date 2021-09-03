@@ -38,9 +38,7 @@ export class UsuarioService {
   }
 
   saveUsuario(usuario: Usuario) {
-    console.log('esta Aqui');
-    console.log(usuario);
-    return this._http.post<Usuario>('http://teste.test/save', usuario);
+    return this._http.post<Usuario>('http://teste.test/aluno', usuario);
   }
 
   
