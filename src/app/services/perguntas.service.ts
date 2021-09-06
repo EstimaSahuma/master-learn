@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Perguntas } from '../interface/pergunta';
@@ -6,21 +7,16 @@ import { Perguntas } from '../interface/pergunta';
   providedIn: 'root'
 })
 export class PerguntasService {
-  perguntas: Perguntas[] = [
-    {id: 1, categoria: 'Medcanica', texto: 'O que é o Mosssssssssssstor', avatar: 'oooooo', referencia: 'kkkkk'},
-    {id: 2, categoria: 'Mecanica', texto: 'O que é o Motor', avatar: 'oooooo', referencia: 'kkkkk'},
-    {id: 2, categoria: 'Mecanica', texto: 'O que é o Motor', avatar: 'oooooo', referencia: 'kkkkk'},
-    {id: 2, categoria: 'Mecanica', texto: 'O que é o Motor', avatar: 'ooooxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxoo', referencia: 'kkkkk'},
-    {id: 2, categoria: 'Mecanica', texto: 'O que é o Motor', avatar: 'oooooo', referencia: 'kkkkk'},
-    {id: 2, categoria: 'Mecanica', texto: 'O que é o Motor', avatar: 'oooooo', referencia: 'kkkkk'},
-    {id: 2, categoria: 'Mecanica', texto: 'O que é o Motor', avatar: 'oooooo', referencia: 'kkkkk'},
-    {id: 2, categoria: 'Mecanica', texto: 'O que é o Motor', avatar: 'oooooo', referencia: 'kkkkk'}
-  ];
 
-  constructor() { }
+  constructor(private _http: HttpClient) { }
 
   getPerguntas() {
-    return this.perguntas.slice();
+    return this._http.get<Perguntas[]>('http://teste.test/perguntas');
+  }
+
+  salvarPerguntas(objecto: any) {
+    console.log(objecto);
+    return this._http.post<any>('http://teste.test/perguntas', objecto);
   }
 
   eliminarPergunta(id: number) {

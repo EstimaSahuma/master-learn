@@ -26,7 +26,7 @@ export class ReportesComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    //this.dataSource.paginator = this.paginator;
 
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
@@ -38,8 +38,12 @@ export class ReportesComponent implements OnInit {
   }
 
   carregarPerguntas(){
-    this.listPerguntas = this._perguntaService.getPerguntas();
-    this.dataSource = new MatTableDataSource(this.listPerguntas);
+    this._perguntaService.getPerguntas().subscribe((perguntas) => {
+
+      this.dataSource = new MatTableDataSource(perguntas);
+
+      this.dataSource.paginator = this.paginator;
+    });
   }
 
   eliminar(id: number) {

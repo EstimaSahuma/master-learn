@@ -33,7 +33,7 @@ export class CriarComponent implements OnInit {
   }
 
   validar() {
-    console.log(this.form.value.nome);
+    //console.log(this.form.value.nome);
 
     this.usuario = {
       nome: this.form.value.nome,
@@ -43,8 +43,8 @@ export class CriarComponent implements OnInit {
       idade: this.form.value.idade
     };
 
-    //this.valor = this._usuarioService.saveUsuario(this.usuario).subscribe();
-      console.log(this._usuarioService.saveUsuario(this.usuario).subscribe());/* 
+    this._usuarioService.saveUsuario(this.usuario).subscribe();
+      /*console.log(this._usuarioService.saveUsuario(this.usuario).subscribe()); 
       if (this._usuarioService.saveUsuario(this.usuario).subscribe()) {
         this._snackBar.open('Eliminado com Sucesso', '', {
           duration: 5000,
